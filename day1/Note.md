@@ -37,7 +37,7 @@ Vue、React、Angular、webpack
 
 现在前端就必须得会这些技术栈，只要你不会，你就找不到工作
 
-大学的实习生都要求要会Vue，React
+**注：大学的实习生都要求要会Vue，React**
 
 ---
 
@@ -216,6 +216,68 @@ var b = Symbol('珠峰');
 a === b // => false
 ```
 
+扩展：JS代码如何被运行以及运行后如何输出结果
+
+【如何被运行】
+
+- 把代码运行在浏览器中（浏览器内核来渲染解析）「1.把JS代码写在页面中的script标签里;2.在页面中引用JS文件」
+- 基于NODE来运行（NODE也是一个基于V8引擎渲染和解析JS的**工具**）「NODE就是长得不像浏览器的浏览器」~~NODE不是一门语言~~
+
+【如何输出结果】
+
+- alert：在浏览器中通过弹框的方式输出（浏览器提示框）
+
+```javascript
+var num = 12;
+alert(num);	// => window.alert()
+
+var str = 'zf';
+alert(str);
+// 基于alert输出的结果都会转换为字符串：把值（如果是表达式先计算出结果），通过toString这个方法转换为字符串，然后再输出
+alert(1+1); // 这个输出的结果是什么？ 字符串 '2'
+alert(true);	// 'true'
+alert([12,23]); // '12,23'
+alert({name:'xxx'});	// => "[object Object]" 为什么对象toString后的结果就是[object Object]，为啥？
+```
+
+- confirm：和alert的用法一直，只不过提示的框中有确定和取消两个按钮，所以它是确认提示框。
+
+```javascript
+var flag = confirm('确定要退出吗？');
+if(flag){
+    // => flag:true 用户点击的是确定按钮
+}else{
+	// => flag:false 用户点击的是取消按钮
+}
+```
+
+- prompt：在confirm的基础上增加输入框
+
+```javascript
+var flag = confirm('请输入你想要输入的内容');
+alert(flag);
+```
+
+- console.log：在浏览器控制台输出日志（按F12（FN+F12）打开浏览器的控制台）
+- 以谷歌浏览器控制台为例
+  - Elements：当前页面中的元素和样式在这里都可以看到，还可以调节元素的样式修改结构等「ctrl+shift+c」
+  - Console：控制台，可以在JS代码中通过.log输出到这里，也可以在这里直接的编写JS代码
+  - Sources：当前网站的源文件都在这里
+  - ......
+- console.dir：比log输出的更加详细一些（尤其是输出对象数据值的时候）
+- console.table：把一个JSON数据按照表格的方式输出
+- 。。。（自己回去扩展更多console输出方法）
+
+```javascript
+var num = 12;
+/* 快捷键：num.log Tab */
+console.log(num);
+```
+
+
+
+JS中常用的输出方式和如何运行JS代码
+
 
 
 JS中的命名规范
@@ -237,4 +299,3 @@ JS中的命名规范
 每周至少抽出三天的时间，而这三天每天至少抽出1小时-1.5小时，什么都不要，从头到尾（）把笔记过一遍，不用死记硬背，就是过一遍，下下周还是这样**从头到尾**过一遍笔记。
 
 简历上不要写精通什么
-
