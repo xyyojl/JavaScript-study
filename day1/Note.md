@@ -179,13 +179,13 @@ var N = 13; // =>两个n不是同一个变量
   - null
   - undefined
 - 引用数据类型
-  - 对象object
+  - 对象 object
     - 普通对象
     - 数组对象
     - 正则对象
     - 日期对象
     - ...
-  - 函数function
+  - 函数 function
 - ES6中新增加的一个特殊的类型：Symbol，唯一的值
 
 ```javascript
@@ -237,7 +237,7 @@ alert(str);
 alert(1+1); // 这个输出的结果是什么？ 字符串 '2'
 alert(true);	// 'true'
 alert([12,23]); // '12,23'
-alert({name:'xxx'});	// => "[object Object]" 为什么对象toString后的结果就是[object Object]，为啥？
+alert({name:'xxx'});	// => 思考题："[object Object]" 为什么对象toString后的结果就是[object Object]，为啥？
 ```
 
 - confirm：和alert的用法一直，只不过提示的框中有确定和取消两个按钮，所以它是确认提示框。
@@ -274,9 +274,31 @@ var num = 12;
 console.log(num);
 ```
 
+## 七、数据类型的详细剖析
 
+1.number数字类型
 
-JS中常用的输出方式和如何运行JS代码
+NaN：not  a number 但是它是数字类型的
+
+isNaN：检测当前值是否不是有效数字，返回true代表，不是有效数字，返回false，是有效数字
+
+``` javascript
+// 语法：isNaN([value])
+var num = 12;
+isNaN(num); // 检测num变量存储的值是否为有效数字 false
+
+isNaN('13') // => false
+isNaN('珠峰')  // => true
+isNaN(true); // => false
+isNaN(false); // => false
+isNaN(null); // => false
+isNaN(undefined); // => true
+isNaN({age:9});	// => true
+isNaN([12,13]); // => true
+isNaN([12]); // => false
+isNaN(/^$/); // => true
+isNaN(function(){}); // => true
+```
 
 
 
