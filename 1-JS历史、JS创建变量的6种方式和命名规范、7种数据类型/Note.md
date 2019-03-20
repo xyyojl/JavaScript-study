@@ -67,22 +67,25 @@ IDE（Integrated Development Environment 集成开发环境）
 
 关于浏览器的内核和引擎
 
-- webkit（V8引擎）：大部分浏览器
-- gecko：火狐
-- trident：IE
+- webkit（V8引擎）：chrome、safari、大部分国产浏览器(360、搜狗、QQ、UC、猎豹)
+- gecko：火狐浏览器
+- trident：IE浏览器
+- Presto：opera浏览器
 
 W3C：万维网联盟：制定编程语言的规范与标准
 
 开发者按照规范编写代码，浏览器开发商也会开发一套按照规范把代码渲染成页面的东西（这个东西就是内核或引擎）
 
+浏览器开发商开发的浏览器,目的就是为了按照W3C的规范,识别出开发者编写的代码,并且在页面中绘制出开发者预想的页面和效果(GPU:显卡),我们把浏览器中识别代码绘制页面的东西成为浏览器的内核或渲染引擎
+
 浏览器的内核作用：按照一定的规范，把代码基于GPU（显卡）绘制出对应的图形和页面等等
 
 为啥会出现浏览器兼容：
 
-1. 部分浏览器会提前开发一些更好的功能，后期这些功能会被收录到W3C规范中，但是在收录之前，会存在一定的兼容性。-webkit-border-radius 只有google有，其他浏览器没有
+1. 部分浏览器会提前开发一些更好的功能，后期这些功能会被收录到W3C规范中，但是在收录之前，会存在一定的兼容性。举个栗子:谷歌浏览器开发了一个新的CSS属性(border-radius)  可以让开发者快速实现盒子圆角。后来火狐浏览器发现这个功能很好用,也实现了这个属性，后来欧朋IE9以上浏览器都要加上这个属性，W3C把它融入到规范的时候。
 2. 各个浏览器厂商，为了突出自己的独特性，用其它方法实现W3C规范中的功能getComputedStyle、currentStyle
 
-马克飞象
+写笔记工具推荐：马克飞象
 
 ---
 
@@ -94,8 +97,9 @@ W3C：万维网联盟：制定编程语言的规范与标准
 - 你不知道的JavaScript
 - JavaScript高级程序设计
 - ES6标准入门
+- 阮一峰javaScript在线教程
 
-JS：轻量级的客户端脚本编程语言
+JS：轻量级的**客户端**脚本**编程语言**
 
 1. 编程语言
 
@@ -119,7 +123,7 @@ JS：轻量级的客户端脚本编程语言
 
 ## 四、ECMAScript
 
-它是JS的语法规划，JS中的变量、数据类型、语法规范、操作语句、设计模型等等都是ES规定的
+它是JS的语法规划，JS中的变量、数据类型、语法规范、操作语句、设计模式等等都是ES规定的
 
 1997 ES1.0 -> 1998 ES2.0 -> 1999 ES3.0 （最为广泛应用）-> 2000 ES4（激进颠覆式更新，最后夭折）-> 2015.6 ES6 ....
 
@@ -130,7 +134,7 @@ JS：轻量级的客户端脚本编程语言
 基于ES语法规范，在JS中创建变量有以下方式：
 
 - var（ES3）创建的是变量
-- function（ES3） 创建函数（函数名也是变量，只不过存储的值是函数类型的而已）
+- function（ES3） 创建函数（函数名也是变量，只不过存储的值是**函数类型**的而已）
 - let（ES6）创建的是变量
 - const（ES6）创建的是常量
 - import（ES6）基于ES6的模块规范导出需要的信息
@@ -164,7 +168,7 @@ m = 200; // 会报错的，Uncaught TypeError: Assignment to constant variable.
 
 ```javascript
 var n = 12;
-var N = 13; // =>两个n不是同一个变量
+var N = 13; // =>两个n不是同一个变量，原因是JS严格区分大小写
 
 // var studentInfo/student_info/_studentInfot（下划线在前的，都是公共变量）/$studentInfo（一般存储的是jQ元素）
 // 语义化强一些 add / create / insert / del(delete) / update / remove(rm) / info / detail 
@@ -173,9 +177,9 @@ var N = 13; // =>两个n不是同一个变量
 ## 六、数据值是一门编程语言进行生产的材料，JS中包含的值有以下这些类型「JS中的数据类型」
 
 - 基本数据类型（值类型）
-  - 数字 number
-  - 字符串 string
-  - 布尔 boolean
+  - 数字 number「数字类型中有一个特殊的值NaN（not a number）代表不是一个**有效的数字**，但是属于number类型的」
+  - 字符串 string「用单引号或者双引号包裹起来的都是字符串」
+  - 布尔 boolean「true,false」
   - null
   - undefined
 - 引用数据类型
@@ -191,7 +195,7 @@ var N = 13; // =>两个n不是同一个变量
 ```javascript
 // [基本数据类型]
 //number
-var n = 13; // => 0 -13 13.2 数字类型中有一个特殊的值NaN（not a number）代表不是一个有效地数字，但是属于number类型的
+var n = 13; // => 0 -13 13.2 数字类型中有一个特殊的值NaN（not a number）代表不是一个有效的数字，但是属于number类型的
 
 //string 
 var s = ''; // => "" '13' "{}" JS中所有用单引号或者双引号包裹起来的都是字符串，里面的内容是当前字符串中的字符（一个字符串由零到多个字符组成）
@@ -225,7 +229,7 @@ a === b // => false
 
 【如何输出结果】
 
-- alert：在浏览器中通过弹框的方式输出（浏览器提示框）
+- alert：在浏览器中通过弹框的方式输出（浏览器提示框）「基于alert输出的结果都会转换为字符串」
 
 ```javascript
 var num = 12;
@@ -240,7 +244,7 @@ alert([12,23]); // '12,23'
 alert({name:'xxx'});	// => 思考题："[object Object]" 为什么对象toString后的结果就是[object Object]，为啥？
 ```
 
-- confirm：和alert的用法一直，只不过提示的框中有确定和取消两个按钮，所以它是确认提示框。
+- confirm：和alert的用法一直，只不过提示的框中有**确定**和**取消**两个按钮，所以它是确认提示框。
 
 ```javascript
 var flag = confirm('确定要退出吗？');
@@ -251,7 +255,7 @@ if(flag){
 }
 ```
 
-- prompt：在confirm的基础上增加输入框
+- prompt：在confirm的基础上增加**输入框**
 
 ```javascript
 var flag = confirm('请输入你想要输入的内容');
@@ -280,7 +284,7 @@ console.log(num);
 
 NaN：not  a number 但是它是数字类型的
 
-isNaN：检测当前值是否不是有效数字，返回true代表，不是有效数字，返回false，是有效数字
+isNaN：检测当前值是否不是有效数字，返回true，代表不是有效数字，返回false，是有效数字
 
 ``` javascript
 // 语法：isNaN([value])
@@ -330,7 +334,7 @@ Number(null) // => 0
 Number(undefined) // => NaN
 ```
 
-- 把引用数据类型转换为数字：先把引用值调取toString转换为字符串，然后再把字符串调取Number转换为数字
+- 把引用数据类型转换为数字：先把引用值调取**toString**转换为字符串，然后再把字符串调取**Number**转换为数字
 
   【对象】
 
@@ -368,11 +372,11 @@ Number('') // => 0
 >
 > 和Number的区别在于字符串转换分析上
 >
-> Number：出现**任意非有效数字字符**，结果就是NaN
+> Number：出现**任意非有效数字字符**，结果就是**NaN**
 >
-> parseInt：把一个字符串中的整数部分解析出来
+> parseInt：把一个字符串中的**整数部分**解析出来
 >
-> parseFloat：把一个字符串中的小数（浮点数）部分解析出来
+> parseFloat：把一个字符串中的**小数（浮点数）部分**解析出来
 
 ```js
 parseInt('13.5px') // => 13
@@ -387,7 +391,9 @@ parseInt('width:13.5px') // => NaN 从字符串最左边字符开始查找有效
 NaN == NaN // => false NaN和谁都不相等，包括自己
 ```
 
-思考题：有一个变量num，存储的值不知道，我想检测它是否为一个有效数字，下面方案是否可以
+思考题：
+
+1、有一个变量num，存储的值不知道，我想检测它是否为一个有效数字，下面方案是否可以？
 
 ```js
 if(Number(num) == NaN){
@@ -401,10 +407,63 @@ if(isNaN(num)){
 }
 ```
 
+2、"[object Object]" 为什么对象toString后的结果就是[object Object]，为啥？
 
+基于alert输出的结果都会转换为字符串，大概就是应用了`String`方法。下面是对`String`方法的剖析：
 
-上课的时候，跟着周啸天老师来做笔记，下课之后绝对是把笔记整理出来。手写，电子版
+`String`方法背后的转换规则，与`Number`方法基本相同，只是互换了`valueOf`方法和`toString`方法的执行顺序。 
 
-每周至少抽出三天的时间，而这三天每天至少抽出1小时-1.5小时，什么都不要，从头到尾（）把笔记过一遍，不用死记硬背，就是过一遍，下下周还是这样**从头到尾**过一遍笔记。
+>1. 先调用对象自身的`toString`方法。如果返回原始类型的值，则对该值使用`String`函数，不再进行以下步骤。
+>2. 如果`toString`方法返回的是对象，再调用原对象的`valueOf`方法。如果`valueOf`方法返回原始类型的值，则对该值使用`String`函数，不再进行以下步骤。
+>3. 如果`valueOf`方法返回的是对象，就报错。
 
-简历上不要写精通什么
+```javascript
+String({a: 1})
+// "[object Object]"
+
+// 等同于
+String({a: 1}.toString())
+// "[object Object]"
+```
+
+上面代码先调用对象的`toString`方法，发现返回的是字符串`[object Object]`，就不再调用`valueOf`方法了。 
+
+注：可以自定义`toString`方法，`toString`方法先于`valueOf`方法执行。
+
+```javascript
+String({
+  toString: function () {
+    return 3;
+  }
+})
+// "3"
+
+String({
+  valueOf: function () {
+    return 2;
+  }
+})
+// "[object Object]"
+
+String({
+  valueOf: function () {
+    return 2;
+  },
+  toString: function () {
+    return 3;
+  }
+})
+// "3"
+```
+
+3、更多console输出方法
+
+[console 对象与控制台](https://wangdoc.com/javascript/features/console.html)
+
+4、单线程同步渲染，多线程异步渲染？？？
+
+上课的时候，跟着周啸天老师来做笔记，下课之后绝对是把笔记整理出来。手写/电子版
+
+**每周至少抽出三天的时间，而这三天每天至少抽出1小时-1.5小时**，什么都不要，**从头到尾**把笔记过一遍，不用死记硬背，就是过一遍，下下周还是这样**从头到尾**过一遍笔记。
+
+简历上不要写精通什么，你这样写的话，保证面试官会加大面试难度，然后就GG。
