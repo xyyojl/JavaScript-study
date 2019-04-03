@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS实现隔行变色</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,ol{list-style: none;}
+        .box{
+            width: 300px;
+            margin: 20px auto;
+        }
+        .box li{
+            padding: 0 5px;
+            line-height: 35px;
+            border-bottom: 1px dashed #aaa;
+            cursor: pointer;
+
+            /* 超出一行的内容自动裁切，以省略号代替 */
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        .bgColor{
+            background-color: lightcyan;
+        }
+
+    </style>
+</head>
+<body>
+    <ul class="box" id="box">
+        <li>岁末，珠峰就业还在一直创造奇迹</li>
+        <li>珠峰成长的秘密-兴盛衰败一挥间，长留慈悲在心念</li>
+        <li>珠峰培训帮我实现外企梦—上海姑娘徐米米的故事</li>
+        <li>应届毕业生也能拿20多万年薪，我是面霸，我一口气拿下六个大公司offer</li>
+        <li>学完之真的能推荐进百度吗，我来揭发珠峰培训的老底</li>
+        <li>担心逻辑差，学不会，23岁切图小妹工资翻倍</li>
+    </ul>
+
+    <script>
+        /* 
+            1. 获取到box容器中所有的li（我们需要先获取box）
+            2.     
+         */
+        //   1. 获取到box容器中所有的li（我们需要先获取box）
+        var oBox = document.getElementById('box');
+
+        // 想要修改box的样式
+        /* 
+            
+            2. 通过className修改样式
+         */
+        //  1. 通过style修改行内样式
+        // oBox.style.backgroundColor = 'pink';
+
+        // 2.基于className属性修改box的样式类名，从而改变样式
+        // oBox['className'] = 'box BgColor';
+        oBox['className'] += ' BgColor';
+
+        
+        var boxList = oBox.getElementsByTagName('li');
+        
+        // 2.搞个循环来完成我们的样式赋值
+
+        for (var i = 0; i < boxList.length; i++) {
+            // => 索引是奇数代表偶数行
+            if (i%2!==0) {
+                // boxList[i].style.backgroundColor = 'pink';
+                boxList[i].className += 'bgColor';
+                
+            }
+            
+        }
+        // 1 代表第2行
+       /*  for (var i = 1; i < boxList.length; i+=2) {
+            boxList[i].className += 'bgColor';
+            
+        } */
+
+        // => 回去后实现隔三行变色
+    </script>
+</body>
+</html>

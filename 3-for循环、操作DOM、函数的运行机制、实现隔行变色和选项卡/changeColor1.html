@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS实现隔行变色</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,ol{list-style: none;}
+        .box{
+            width: 300px;
+            margin: 20px auto;
+        }
+        .box li{
+            padding: 0 5px;
+            line-height: 35px;
+            border-bottom: 1px dashed #aaa;
+            cursor: pointer;
+
+            /* 超出一行的内容自动裁切，以省略号代替 */
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        
+        .box li:nth-child(odd){
+            background-color: lightcyan;
+        }
+
+        /* 
+            关于CSS3的一个小知识
+            nth-child(n):当前容器所有子元素中的第N个
+                .box li:nth-child(1): box容器所有子元素中的第一个并且标签名是li的
+            nth-of-type(n):先给当前容器按照某一个标签名进行分组，获取分组中的第N个
+                .box li:nth-of-type(1): 先获取box中的所有的li，在获取li中的第一个
+
+            这个选择器匹配偶数even,奇数odd
+            .box li:nth-of-type(even){
+                background-color: lightcyan;
+            }
+         */
+
+        .box li:hover {  /*!*鼠标滑过的样式,鼠标离开回归原有样式*!*/
+            background: lightcoral;
+        }
+
+    </style>
+</head>
+<body>
+    <ul class="box">
+        <li>岁末，珠峰就业还在一直创造奇迹</li>
+        <li>珠峰成长的秘密-兴盛衰败一挥间，长留慈悲在心念</li>
+        <li>珠峰培训帮我实现外企梦—上海姑娘徐米米的故事</li>
+        <li>应届毕业生也能拿20多万年薪，我是面霸，我一口气拿下六个大公司offer</li>
+        <li>学完之真的能推荐进百度吗，我来揭发珠峰培训的老底</li>
+        <li>担心逻辑差，学不会，23岁切图小妹工资翻倍</li>
+    </ul>
+</body>
+</html>

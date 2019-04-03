@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.min.css">
+    <style>
+        .tabBox{
+            width: 500px;
+            margin: 20px auto;
+        }
+        .tabBox ul{
+            position: relative;
+            top: 1px;
+            /* 相对于自己之前的位置向下移动1px，使得边框重合 */
+        }
+        .tabBox ul li{
+            display: inline-block;
+            padding: 0 10px;
+            margin-right: 10px;
+            line-height: 33px;
+            border: 1px solid #aaa;
+            cursor: pointer;
+        }
+        .tabBox ul li.active{
+            color: lightcoral;
+            font-weight: bold;
+            border-bottom-color: #fff;
+            /* 当前li的边框覆盖着div的边框，我们让li的下边框是背景颜色白色
+            这样看上去就好像没有边框了 */
+        }
+        .tabBox div{
+            display: none;
+            line-height: 148px;
+            text-align: center;
+            border: 1px solid #aaa;
+        }
+        .tabBox div.active{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- div.tabBox#tabBox>(ul>li*3)+(div*3) [TAB] 快速写好结构-->
+    <div class="tabBox" id="tabBox">
+        <ul>
+            <li class="active">新闻</li>
+            <li>电影</li>
+            <li>音乐</li>
+        </ul>
+        <div class="active">金三胖来华访问</div>
+        <div>复仇者联盟3</div>
+        <div>没时间听音乐</div>
+    </div>
+    <script src="./js/tab.js"></script>
+</body>
+</html>
